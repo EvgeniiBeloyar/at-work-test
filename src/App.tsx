@@ -1,8 +1,9 @@
-import { Button, Categories, Input } from 'Common/components';
+import { Button, Categories, Dropdown, Input } from 'Common/components';
 import './scss/main.scss';
 import { useState } from 'react';
 
 function App() {
+	const options = ['Редактировать', 'Архивировать', 'Скрыть'];
 	const [form, setForm] = useState({
 		name: '',
 	});
@@ -16,7 +17,6 @@ function App() {
 	};
 	return (
 		<>
-			<h1>AT-WORK</h1>
 			<Button>Button</Button>
 			<Categories />
 			<div style={{ width: '420px' }}>
@@ -29,6 +29,7 @@ function App() {
 					onClear={() => handleClear('name')}
 				/>
 			</div>
+			<Dropdown options={options} />
 		</>
 	);
 }
