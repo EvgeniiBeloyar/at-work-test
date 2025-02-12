@@ -1,36 +1,17 @@
-import { Button, Categories, Dropdown, Input } from 'Common/components';
+import { Route, Routes } from 'react-router-dom';
 import './scss/main.scss';
-import { useState } from 'react';
+import Layout from 'Components/Layout';
+import { ROUTES } from 'Common/consts';
 
 function App() {
-	const options = ['Редактировать', 'Архивировать', 'Скрыть'];
-	const [form, setForm] = useState({
-		name: '',
-	});
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setForm({ ...form, [e.target.name]: e.target.value });
-	};
-
-	const handleClear = (field: keyof typeof form) => {
-		setForm({ ...form, [field]: '' });
-	};
 	return (
-		<>
-			<Button>Button</Button>
-			<Categories />
-			<div style={{ width: '420px' }}>
-				<Input
-					label="Имя"
-					placeholder="Введите имя"
-					name="name"
-					value={form.name}
-					onChange={handleChange}
-					onClear={() => handleClear('name')}
-				/>
-			</div>
-			<Dropdown options={options} />
-		</>
+		<Routes>
+			<Route path="/" element={<Layout />}>
+				<Route path="/" element={<>тут главная</>} />
+				<Route path={ROUTES.PROFILE} element={<>тут профиль</>} />
+				<Route path={ROUTES.PROFILE_ID} element={<>тут профиль</>} />
+			</Route>
+		</Routes>
 	);
 }
 
