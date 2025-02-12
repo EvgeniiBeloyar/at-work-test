@@ -1,0 +1,32 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/breakpoints' as *;
+
+.categories {
+	padding-bottom: 11px;
+	width: 100%;
+	@include T2-MEDIUM;
+	color: var(--color-gray-500);
+	border-bottom: 1px solid var(--color-gray-300);
+	overflow: hidden;
+	overflow-wrap: break-word;
+	transition: all var(--transition-300);
+
+	@include hover {
+		color: var(--color-accent);
+	}
+
+	&.active,
+	&:active {
+		@include T2-SEMIBOLD;
+		color: var(--color-black);
+	}
+
+	@include media-max-md {
+		padding-bottom: 7px;
+
+		&:active {
+			@include T2-MEDIUM;
+		}
+	}
+}
