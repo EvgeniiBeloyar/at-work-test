@@ -8,9 +8,8 @@
 		// src: url('#{$file-path}.eot');
 		src:
 			local('#{$font-family}'),
-			/* url('#{$file-path}.eot?#iefix') format('embedded-opentype'),*/
-				/* url("#{$file-path}.woff2") format("woff2"),*/ /* url("#{$file-path}.woff") format("woff"),*/
-				url('#{$file-path}.ttf') format('truetype');
+			/* url('#{$file-path}.eot?#iefix') format('embedded-opentype'),*/ /* url("#{$file-path}.woff2") format("woff2"),*/
+				/* url("#{$file-path}.woff") format("woff"),*/ url('#{$file-path}.ttf') format('truetype');
 		font-display: swap;
 	}
 }
