@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import cn from 'classnames';
 import styles from './Button.module.scss';
 
 /**
@@ -16,7 +15,7 @@ interface IProps {
 /** Компонент кнопки */
 const Button = ({ children, className, ...props }: IProps): ReactElement => {
 	return (
-		<button type="button" className={cn(styles.button, className)} {...props}>
+		<button type="button" className={`${styles.button} ${className}`} {...props}>
 			{children}
 		</button>
 	);
