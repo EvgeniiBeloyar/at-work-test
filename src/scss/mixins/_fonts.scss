@@ -1,0 +1,74 @@
+@use './breakpoints' as *;
+
+@mixin TITLE {
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 33px;
+}
+
+@mixin HEADLINE {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 27px;
+
+	@include media-max-md {
+		font-size: 18px;
+		line-height: 25px;
+	}
+}
+
+@mixin T1-SEMIBOLD {
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+
+	@include media-max-md {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}
+
+@mixin T1-MEDIUM {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 25px;
+
+	@include media-max-md {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}
+
+@mixin T2-SEMIBOLD {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 22px;
+
+	@include media-max-md {
+		font-size: 14px;
+		line-height: 19px;
+	}
+}
+
+@mixin T2-MEDIUM {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 22px;
+
+	@include media-max-md {
+		font-size: 14px;
+		line-height: 19px;
+	}
+}
+
+@mixin CAPTION {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 19px;
+
+	@include media-max-md {
+		font-weight: 600;
+		font-size: 10px;
+		line-height: 14px;
+	}
+}

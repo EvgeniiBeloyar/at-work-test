@@ -1,0 +1,119 @@
+@use 'sass:math';
+@use '../base/variables' as *;
+
+/**
+    Универсальные медиазапросы min-width и max-width
+    Работают только с px в качестве аргумента
+*/
+@mixin media-min($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin media-max($width) {
+	@media (max-width: $width) {
+		@content;
+	}
+}
+
+/**  Контрольные точки min-width */
+
+@mixin media-min-xs {
+	@media (min-width: $grid-breakpoints-xs) {
+		@content;
+	}
+}
+
+@mixin media-min-sm {
+	@media (min-width: $grid-breakpoints-sm) {
+		@content;
+	}
+}
+
+@mixin media-min-md {
+	@media (min-width: $grid-breakpoints-sm) {
+		@content;
+	}
+}
+
+@mixin media-min-lg {
+	@media (min-width: $grid-breakpoints-lg) {
+		@content;
+	}
+}
+
+@mixin media-min-xl {
+	@media (min-width: $grid-breakpoints-xl) {
+		@content;
+	}
+}
+
+@mixin media-min-xxl {
+	@media (min-width: $grid-breakpoints-xxl) {
+		@content;
+	}
+}
+
+/** Контрольные точки max-width (- .02px) */
+
+@mixin media-max-sm {
+	@media (max-width: $grid-breakpoints-max-sm) {
+		@content;
+	}
+}
+
+@mixin media-max-md {
+	@media (max-width: $grid-breakpoints-max-md) {
+		@content;
+	}
+}
+
+@mixin media-max-lg {
+	@media (max-width: $grid-breakpoints-max-lg) {
+		@content;
+	}
+}
+
+@mixin media-max-xl {
+	@media (max-width: $grid-breakpoints-max-xl) {
+		@content;
+	}
+}
+
+@mixin media-max-xxl {
+	@media (max-width: $grid-breakpoints-max-xxl) {
+		@content;
+	}
+}
+
+/** 
+    Контрольные точки - диапазон min - max ( - .02px )
+    Работают с px, $var, xxl - из ас. массива
+*/
+
+@mixin media-between($min-width, $max-width) {
+	@each $breakpoint-name, $breakpoint-width in $grid-breakpoints {
+		@if $min-width == $breakpoint-name {
+			$min-width: $breakpoint-width;
+		}
+
+		@if $max-width == $breakpoint-name {
+			$max-width: $breakpoint-width;
+		}
+	}
+
+	@if unit($min-width) != 'px' or unit($max-width) != 'px' {
+		@error 'ОШИБКА! Нужно проверить значение';
+	}
+
+	@if $min-width < $max-width {
+		@media (min-width: $min-width) and (max-width: $max-width) {
+			@content;
+		}
+	} @else {
+		@error 'Значение min-width - #{$min-width} больше чем значение max-width #{$max-width}';
+	}
+
+	$max-width: $max-width - 0.02px;
+}
