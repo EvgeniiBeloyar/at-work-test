@@ -1,3 +1,4 @@
+import Header from 'Components/Header';
 import { ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -5,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 const Layout = (): ReactElement => {
 	return (
 		<>
-			<div>header</div>
+			<Header />
 			<main>
 				<Outlet />
 			</main>
