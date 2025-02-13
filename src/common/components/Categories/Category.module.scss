@@ -2,6 +2,16 @@
 @use 'Scss/mixins/hover' as *;
 @use 'Scss/mixins/breakpoints' as *;
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	@include media-max-md {
+		gap: 20px;
+	}
+}
+
 .categories {
 	padding-bottom: 11px;
 	width: 100%;
@@ -20,6 +30,10 @@
 	&:active {
 		@include T2-SEMIBOLD;
 		color: var(--color-black);
+
+		@include media-max-md {
+			@include T2-MEDIUM;
+		}
 	}
 
 	@include media-max-md {
