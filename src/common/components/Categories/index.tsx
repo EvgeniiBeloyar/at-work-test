@@ -12,18 +12,19 @@ interface IProps {
 	className?: string;
 }
 
+// TODO - продумать внутренни роутинг / и заблокировать текущую ссылку
 /** Компонент категорий */
 const Categories = ({ className }: IProps): ReactElement => {
 	const { pathname } = useLocation();
 
 	return (
-		<ul>
+		<ul className={`${styles.wrapper} ${className}`}>
 			{ITEMS.map(({ slug, label }) => {
 				const isActive = pathname.startsWith(slug);
 
 				return (
 					<li key={slug}>
-						<Link to={slug} className={`${styles.categories} ${className} ${isActive ? styles.active : ''}`}>
+						<Link to={slug} className={`${styles.categories} ${isActive ? styles.active : ''}`}>
 							{label}
 						</Link>
 					</li>
