@@ -1,0 +1,128 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/base/z-index' as *;
+
+.card {
+	position: relative;
+	padding: 24px;
+	min-height: 168px;
+	background-color: var(--color-gray-50);
+	border-radius: 16px;
+
+	@include media-max-md {
+		padding: 16px;
+	}
+}
+
+.archive {
+	.avatar {
+		img {
+			filter: grayscale(100%);
+		}
+	}
+
+	.name {
+		color: var(--color-gray-700);
+	}
+
+	.company {
+		color: var(--color-gray-500);
+	}
+
+	.city {
+		color: var(--color-gray-300);
+	}
+}
+
+.dropdownWrapper {
+	position: absolute;
+	top: 26px;
+	right: 24px;
+	z-index: $ui-index-4;
+
+	@include media-max-md {
+		top: 153px;
+		right: 16px;
+	}
+}
+
+.inner {
+	display: flex;
+	gap: 20px;
+
+	@include media-max-md {
+		flex-direction: column;
+		gap: 16px;
+	}
+}
+
+.avatar {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 112px;
+	height: 120px;
+	border-radius: 8px;
+	overflow: hidden;
+	flex-shrink: 0;
+
+	@include media-max-md {
+		max-width: 130px;
+		height: 120px;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.inner {
+	position: relative;
+}
+
+.info {
+	max-width: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.name {
+	padding-right: 40px;
+	@include HEADLINE;
+	color: var(--color-accent);
+
+	@include media-max-md {
+		padding-right: 36px;
+	}
+}
+
+.name,
+.company,
+.city {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.company {
+	margin-top: 4px;
+	@include T2-MEDIUM;
+	color: var(--color-gray-700);
+
+	@include media-max-md {
+		@include T2-SEMIBOLD;
+	}
+}
+
+.city {
+	margin-top: auto;
+	@include CAPTION;
+	color: var(--color-gray-500);
+
+	@include media-max-md {
+		margin-top: 12px;
+	}
+}
