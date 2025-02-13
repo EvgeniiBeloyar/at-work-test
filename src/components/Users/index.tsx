@@ -11,7 +11,7 @@ const Users = (): ReactElement => {
 	return (
 		<div className={`${STYLES.container} ${styles.wrapper}`}>
 			<section className={styles.section}>
-				<h2 className={styles.title}>{TRANSLATE.ACTIVE}</h2>
+				<h2 className={STYLES.title}>{TRANSLATE.ACTIVE}</h2>
 				<div className={styles.grid}>
 					{kek.map((_, index) => (
 						<UserCard key={index} />
@@ -19,7 +19,7 @@ const Users = (): ReactElement => {
 				</div>
 			</section>
 			<section className={styles.section}>
-				<h2 className={styles.title}>{TRANSLATE.ARCHIVE}</h2>
+				<h2 className={STYLES.title}>{TRANSLATE.ARCHIVE}</h2>
 				<div className={styles.grid}>
 					{kek.map((_, index) => (
 						<UserCard key={index} archive={true} />

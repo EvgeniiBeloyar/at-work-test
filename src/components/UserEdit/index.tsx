@@ -4,11 +4,29 @@ import styles from './UserEdit.module.scss';
 import { TRANSLATE } from './i18';
 import { Button, Categories, Input } from 'Common/components';
 
-// TODO: Заголовок вынести или в компонент или стили в миксин или класс
-// TODO: сделать интерфейс
+/**
+ * @desc Интерфейс для формы редактирования.
+ *
+ * @prop {string} name - Имя.
+ * @prop {string} nickname - Псевдоним.
+ * @prop {string} email - Email.
+ * @prop {string} city - Город.
+ * @prop {string} phone - Телефон.
+ * @prop {string} company - Компания.
+ *
+ */
+interface IFormData {
+	name: string;
+	nickname: string;
+	email: string;
+	city: string;
+	phone: string;
+	company: string;
+}
+
 /** Компонент редактирования пользователя */
 const UserEdit = (): ReactElement => {
-	const [form, setForm] = useState({
+	const [form, setForm] = useState<IFormData>({
 		name: '',
 		nickname: '',
 		email: '',
@@ -51,7 +69,7 @@ const UserEdit = (): ReactElement => {
 					<Categories className={styles.categories} />
 				</div>
 				<div className={styles.main}>
-					<h2 className={styles.title}>{TRANSLATE.PROFILE}</h2>
+					<h2 className={STYLES.title}>{TRANSLATE.PROFILE}</h2>
 					<form className={styles.form}>
 						<div className={styles.inputs}>
 							<Input

@@ -1,3 +1,5 @@
+@use 'Scss/mixins/fonts' as *;
+
 html,
 body {
 	height: 100%;
@@ -62,4 +64,11 @@ input[type='search']::-webkit-search-results-decoration {
 
 .overflow-hidden {
 	overflow: hidden;
+}
+
+.title {
+	padding-bottom: 15px;
+	@include TITLE;
+	color: var(--color-black);
+	border-bottom: 1px solid var(--color-gray-300);
 }
