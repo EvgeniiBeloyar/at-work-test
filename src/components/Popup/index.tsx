@@ -10,7 +10,7 @@ const Popup = (): ReactElement => {
 	const isPopupOpen = useMyAppSelector().isActivePopup;
 
 	/** Обработчик закрытия попапа */
-	const handleCloseModal = () => {
+	const handleCloseModal = (): void => {
 		dispatch(setActivePopup(false));
 	};
 
@@ -25,6 +25,7 @@ const Popup = (): ReactElement => {
 				document.body.style.overflow = '';
 			};
 		}
+		// eslint-disable-next-line
 	}, [isPopupOpen]);
 
 	return (

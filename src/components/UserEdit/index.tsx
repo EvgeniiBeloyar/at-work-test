@@ -36,7 +36,7 @@ const UserEdit = (): ReactElement => {
 	};
 
 	/** Обработчик отправки */
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent): void => {
 		e.preventDefault();
 
 		const newErrors = validateForm(form);
