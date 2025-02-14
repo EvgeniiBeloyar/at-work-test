@@ -2,7 +2,7 @@ import { STYLES } from 'Common/consts';
 import { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import styles from './UserEdit.module.scss';
 import { TRANSLATE } from './i18';
-import { Button, Categories, Input } from 'Common/components';
+import { Button, Categories, Input, Loader } from 'Common/components';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'Store/users.slice';
@@ -87,30 +87,24 @@ const UserEdit = (): ReactElement => {
 
 	return (
 		<div className={`${STYLES.container} ${styles.wrapper}`}>
-			{isLoading && <h2>Загрузка...</h2>}
+			<div className={styles.back}>
+				<button type="button" className={styles.backButton} onClick={goBackHandler}>
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
+						<path d="M11.25 12H0.75" stroke="#161616" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+						<path
+							d="M6 17.25L0.75 12L6 6.75"
+							stroke="#161616"
+							strokeWidth="1.5"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+					<p>{TRANSLATE.BACK}</p>
+				</button>
+			</div>
+			{isLoading && <Loader position="fixed" />}
 			{!isLoading && (
 				<>
-					<div className={styles.back}>
-						<button type="button" className={styles.backButton} onClick={goBackHandler}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
-								<path
-									d="M11.25 12H0.75"
-									stroke="#161616"
-									strokeWidth="1.5"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-								<path
-									d="M6 17.25L0.75 12L6 6.75"
-									stroke="#161616"
-									strokeWidth="1.5"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-							<p>{TRANSLATE.BACK}</p>
-						</button>
-					</div>
 					<section className={styles.inner}>
 						<div className={styles.nav}>
 							<div className={styles.avatar}>

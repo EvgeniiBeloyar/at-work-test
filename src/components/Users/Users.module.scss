@@ -2,6 +2,7 @@
 @use 'Scss/mixins/breakpoints' as *;
 
 .wrapper {
+	position: relative;
 	padding-bottom: 198px;
 
 	@include media-max-md {

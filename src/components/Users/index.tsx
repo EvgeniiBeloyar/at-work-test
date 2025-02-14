@@ -5,6 +5,7 @@ import UserCard from './components/UserCard';
 import { TRANSLATE } from './i18';
 import { fetchUsers, useUsersSelector } from 'Store/users.slice';
 import { useAppDispatch } from 'Common/hooks';
+import { Loader } from 'Common/components';
 
 /** Компонент списка пользователей */
 const Users = (): ReactElement => {
@@ -21,29 +22,31 @@ const Users = (): ReactElement => {
 	}, [activeUsers]);
 
 	return (
-		<div className={`${STYLES.container} ${styles.wrapper}`}>
-			{isLoading && <div>Loading...</div>}
-			{!isLoading && !error && (
-				<>
-					<section className={styles.section}>
-						<h2 className={STYLES.title}>{TRANSLATE.ACTIVE}</h2>
-						<div className={styles.grid}>
-							{activeUsers.map(user => (
-								<UserCard key={user.id} user={user} />
-							))}
-						</div>
-					</section>
-					<section className={styles.section}>
-						<h2 className={STYLES.title}>{TRANSLATE.ARCHIVE}</h2>
-						<div className={styles.grid}>
-							{archivedUsers.map(user => (
-								<UserCard key={user.id} user={user} archive={true} />
-							))}
-						</div>
-					</section>
-				</>
-			)}
-		</div>
+		<>
+			<div className={`${STYLES.container} ${styles.wrapper}`}>
+				{isLoading && <Loader position="fixed" />}
+				{!isLoading && !error && (
+					<>
+						<section className={styles.section}>
+							<h2 className={STYLES.title}>{TRANSLATE.ACTIVE}</h2>
+							<div className={styles.grid}>
+								{activeUsers.map(user => (
+									<UserCard key={user.id} user={user} />
+								))}
+							</div>
+						</section>
+						<section className={styles.section}>
+							<h2 className={STYLES.title}>{TRANSLATE.ARCHIVE}</h2>
+							<div className={styles.grid}>
+								{archivedUsers.map(user => (
+									<UserCard key={user.id} user={user} archive={true} />
+								))}
+							</div>
+						</section>
+					</>
+				)}
+			</div>
+		</>
 	);
 };
 
