@@ -5,7 +5,7 @@ import { TRANSLATE } from './i18';
 import { Button, Categories, Input } from 'Common/components';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateUser, useUsersSelector } from 'Store/users.slice';
+import { updateUser } from 'Store/users.slice';
 import { fetchUserById } from './services';
 import { validateForm } from './utils';
 import { IFormData } from './models';
@@ -19,11 +19,6 @@ const UserEdit = (): ReactElement => {
 	const [form, setForm] = useState<IFormData>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [errors, setErrors] = useState<Partial<IFormData>>({});
-	const { activeUsers } = useUsersSelector();
-
-	console.log(`form`, form);
-	console.log(`errors`, errors);
-	console.log(`activeUsers`, activeUsers);
 
 	/** Обработчик нажатия кнопки "Назад" */
 	const goBackHandler = (): void => {
