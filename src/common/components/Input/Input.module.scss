@@ -65,6 +65,11 @@
 	pointer-events: all;
 }
 
+.inner:has(input:active) .clear {
+	opacity: 1;
+	pointer-events: all;
+}
+
 .error {
 	@include CAPTION;
 	color: var(--color-red);
