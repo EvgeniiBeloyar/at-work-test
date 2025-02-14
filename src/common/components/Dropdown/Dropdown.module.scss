@@ -1,5 +1,6 @@
 @use 'Scss/mixins/fonts' as *;
 @use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
 @use 'Scss/mixins/breakpoints' as *;
 @use 'Scss/base/z-index' as *;
 
@@ -8,19 +9,7 @@
 }
 
 .trigger {
-	svg {
-		path {
-			transition: all var(--transition-300);
-		}
-	}
-
-	@include hover {
-		svg {
-			path {
-				fill: var(--color-accent);
-			}
-		}
-	}
+	@include ICON-FILL;
 }
 
 .body {

@@ -1,5 +1,6 @@
 @use 'Scss/mixins/fonts' as *;
 @use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
 @use 'Scss/mixins/breakpoints' as *;
 @use 'Scss/base/z-index' as *;
 
@@ -36,24 +37,14 @@
 	gap: 4px;
 	flex-shrink: 0;
 
-	svg {
-		path {
-			transition: all var(--transition-300);
-		}
-	}
-
 	a {
 		svg {
 			path {
 				stroke: var(--color-gray-700);
 			}
-
-			@include hover {
-				path {
-					stroke: var(--color-accent);
-				}
-			}
 		}
+
+		@include ICON-STROKE;
 	}
 
 	button {
@@ -61,13 +52,9 @@
 			path {
 				fill: var(--color-gray-700);
 			}
-
-			@include hover {
-				path {
-					fill: var(--color-accent);
-				}
-			}
 		}
+
+		@include ICON-FILL;
 	}
 }
 

@@ -18,7 +18,6 @@ interface IProps {
 	className?: string;
 }
 
-// TODO: сделать tap для иконок - окрас svg в серый
 /** Компонент выпадающего списка */
 const Dropdown = ({ options, userId, className }: IProps): ReactElement => {
 	const navigate = useNavigate();

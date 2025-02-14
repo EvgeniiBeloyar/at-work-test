@@ -1,6 +1,7 @@
 @use 'Scss/mixins/fonts' as *;
 @use 'Scss/mixins/hover' as *;
 @use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/mixins/icons' as *;
 
 .wrapper {
 	padding-bottom: 265px;
@@ -30,6 +31,8 @@
 			stroke: var(--color-gray-700);
 		}
 	}
+
+	@include ICON-STROKE;
 
 	@include media-max-md {
 		gap: 14px;

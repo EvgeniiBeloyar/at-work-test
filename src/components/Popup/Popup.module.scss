@@ -1,5 +1,7 @@
 @use 'Scss/mixins/fonts' as *;
 @use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
 
 .overlay {
 	position: fixed;
@@ -46,6 +48,8 @@
 	position: absolute;
 	top: 12px;
 	right: 12px;
+
+	@include ICON-FILL;
 }
 
 .body {
