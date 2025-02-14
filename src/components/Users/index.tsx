@@ -6,7 +6,6 @@ import { TRANSLATE } from './i18';
 import { fetchUsers, useUsersSelector } from 'Store/users.slice';
 import { useAppDispatch } from 'Common/hooks';
 
-// TODO: стилизовать ошибку/лоадинг - сделать лоадер
 /** Компонент списка пользователей */
 const Users = (): ReactElement => {
 	const dispatch = useAppDispatch();
@@ -24,7 +23,6 @@ const Users = (): ReactElement => {
 	return (
 		<div className={`${STYLES.container} ${styles.wrapper}`}>
 			{isLoading && <div>Loading...</div>}
-			{error && <div>Error</div>}
 			{!isLoading && !error && (
 				<>
 					<section className={styles.section}>

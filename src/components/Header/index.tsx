@@ -3,7 +3,6 @@ import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { useMatchMedia } from 'Common/hooks';
 
-// TODO: вынести ховер иконок в миксин/класс, svg мб вынести в отдельный компонент
 /** Компонент шапки */
 const Header = (): ReactElement => {
 	const { isMobile } = useMatchMedia();
