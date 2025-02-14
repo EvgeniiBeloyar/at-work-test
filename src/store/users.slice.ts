@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { useAppSelector } from 'Common/hooks';
 import { RootState } from './store';
 import { User } from './models';
-import { IFormData } from 'Components/UserEdit';
+import { IFormData } from 'Components/UserEdit/models';
 
 /**
  * @desc Интерфейс состояния пользователя
@@ -99,9 +99,9 @@ export const usersSlice = createSlice({
 	},
 });
 
-const productSelector = (state: RootState) => state.users;
+const productSelector = (state: RootState): IUsersReduxState => state.users;
 
-export const useUsersSelector = () => useAppSelector(productSelector);
+export const useUsersSelector = (): IUsersReduxState => useAppSelector(productSelector);
 
 export const { moveToArchive, moveToActive, updateUser, removeUser } = usersSlice.actions;
 export default usersSlice.reducer;

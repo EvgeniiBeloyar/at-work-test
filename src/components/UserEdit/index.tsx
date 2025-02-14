@@ -9,6 +9,7 @@ import { updateUser, useUsersSelector } from 'Store/users.slice';
 import { fetchUserById } from './services';
 import { validateForm } from './utils';
 import { IFormData } from './models';
+import { setActivePopup } from 'Store/app.slice';
 
 /** Компонент редактирования пользователя */
 const UserEdit = (): ReactElement => {
@@ -53,7 +54,10 @@ const UserEdit = (): ReactElement => {
 		}
 
 		if (form) {
+			/** Обновляем данные пользователя */
 			dispatch(updateUser({ id: Number(id), formData: form }));
+			/** Показываем попап */
+			dispatch(setActivePopup(true));
 		}
 	};
 
