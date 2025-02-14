@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ComponentPropsWithoutRef, ReactElement } from 'react';
 import styles from './Button.module.scss';
 
 /**
@@ -7,7 +7,7 @@ import styles from './Button.module.scss';
  * @prop {ReactElement | string} children - Контент.
  * @prop {string} className - Css-класс.
  */
-interface IProps {
+interface IProps extends ComponentPropsWithoutRef<'button'> {
 	children: ReactElement | string;
 	className?: string;
 }
