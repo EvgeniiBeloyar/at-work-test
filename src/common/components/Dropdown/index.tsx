@@ -1,21 +1,28 @@
 import { ReactElement, useState } from 'react';
 import styles from './Dropdown.module.scss';
-import { useMatchMedia, useOutsideClick } from 'Common/hooks';
+import { useAppDispatch, useMatchMedia, useOutsideClick } from 'Common/hooks';
+import { moveToActive, moveToArchive, removeUser } from 'Store/users.slice';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from 'Common/consts';
 
 /**
  * @desc Интерфейс компонента выпадающего списка.
  *
- * @prop {string[]} options - Опции для выпадающего списка
+ * @prop {string[]} options - Опции для выпадающего списка.
+ * @prop {number} userId - ID пользователя.
  * @prop {string} className - Css-класс.
  */
 interface IProps {
 	options: string[];
+	userId: number;
 	className?: string;
 }
 
 // TODO: сделать tap для иконок - окрас svg в серый
 /** Компонент выпадающего списка */
-const Dropdown = ({ options, className }: IProps): ReactElement => {
+const Dropdown = ({ options, userId, className }: IProps): ReactElement => {
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const { isMobile } = useMatchMedia();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -33,14 +40,30 @@ const Dropdown = ({ options, className }: IProps): ReactElement => {
 		setIsOpen(false);
 	};
 
-	/** Обработчик нажатия кнопки */
-	const handleSelected = (): void => {
-		console.log('тут будет обработчик клика');
-		toggleDropdown();
-	};
-
 	const dropdownRef = useOutsideClick(handleClickOutside);
 
+	/** Обработчик нажатия кнопки */
+	const handleSelected = (option: string): void => {
+		switch (option) {
+			// Переход на страницу редактирования пользователя
+			case 'Редактировать':
+				navigate(`${ROUTES.PROFILE}/${userId}`);
+				break;
+			// Архивируем пользователя
+			case 'Архивировать':
+				dispatch(moveToArchive(userId));
+				break;
+			case 'Скрыть':
+				// Скрываем пользователя
+				dispatch(removeUser(userId));
+				break;
+			case 'Активировать':
+				// Активируем пользователя
+				dispatch(moveToActive(userId));
+				break;
+		}
+		toggleDropdown();
+	};
 	return (
 		<div ref={dropdownRef} className={`${styles.dropdown} ${className}`}>
 			<button className={styles.trigger} onClick={toggleDropdown}>
@@ -79,9 +102,9 @@ const Dropdown = ({ options, className }: IProps): ReactElement => {
 			<div className={`${styles.body} ${isOpen ? styles.open : ''}`}>
 				<div className={styles.inner}>
 					<ul className={styles.list}>
-						{options.map((option, index) => (
-							<li key={index} className={styles.item}>
-								<button type="button" onClick={handleSelected}>
+						{options.map(option => (
+							<li key={option} className={styles.item}>
+								<button type="button" onClick={() => handleSelected(option)}>
 									{option}
 								</button>
 							</li>
