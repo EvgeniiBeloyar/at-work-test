@@ -3,9 +3,11 @@ import styles from './Popup.module.scss';
 import { TRANSLATE } from './i18';
 import { useDispatch } from 'react-redux';
 import { setActivePopup, useMyAppSelector } from 'Store/app.slice';
+import { useLocation } from 'react-router-dom';
 
 /** Компонент попапа */
 const Popup = (): ReactElement => {
+	const location = useLocation();
 	const dispatch = useDispatch();
 	const isPopupOpen = useMyAppSelector().isActivePopup;
 
@@ -27,6 +29,13 @@ const Popup = (): ReactElement => {
 		}
 		// eslint-disable-next-line
 	}, [isPopupOpen]);
+
+	/** Закрываем попап при изменении маршрута */
+	useEffect(() => {
+		if (isPopupOpen) {
+			handleCloseModal();
+		}
+	}, [location]);
 
 	return (
 		<div className={`${styles.overlay} ${isPopupOpen ? styles.active : ''}`}>
