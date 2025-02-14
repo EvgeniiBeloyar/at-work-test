@@ -11,14 +11,15 @@ import { useAppDispatch } from 'Common/hooks';
 const Users = (): ReactElement => {
 	const dispatch = useAppDispatch();
 	const { activeUsers, archivedUsers, isLoading, error } = useUsersSelector();
+	const usersLimit = 6;
 
 	/** Получение списка пользователей */
 	useEffect(() => {
-		// TODO: вынести в const
-		const usersLimit = 6;
-		dispatch(fetchUsers({ usersLimit }));
+		if (activeUsers.length === 0) {
+			dispatch(fetchUsers({ usersLimit }));
+		}
 		// eslint-disable-next-line
-	}, []);
+	}, [activeUsers]);
 
 	return (
 		<div className={`${STYLES.container} ${styles.wrapper}`}>

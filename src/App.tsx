@@ -4,11 +4,11 @@ import Layout from 'Components/Layout';
 import { ROUTES } from 'Common/consts';
 import HomePage from 'Pages/HomePage';
 import UserEditPage from 'Pages/UserEditPage';
-import Popup from 'Components/Popup';
+import { lazy, Suspense } from 'react';
+
+const PopupLazy = lazy(() => import('Components/Popup'));
 
 function App() {
-	const isPopupOpen = false;
-
 	return (
 		<>
 			<Routes>
@@ -18,7 +18,10 @@ function App() {
 					<Route path={ROUTES.PROFILE_ID} element={<UserEditPage />} />
 				</Route>
 			</Routes>
-			{isPopupOpen && <Popup />}
+
+			<Suspense fallback={<></>}>
+				<PopupLazy />
+			</Suspense>
 		</>
 	);
 }

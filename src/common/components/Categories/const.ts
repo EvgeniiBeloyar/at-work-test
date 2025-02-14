@@ -1,6 +1,8 @@
+import { TRANSLATE } from './i18';
+
 export const ITEMS = [
-	{ slug: '/profile', label: 'Данные профиля' },
-	{ slug: '/workspace', label: 'Рабочее пространство' },
-	{ slug: '/privacy', label: 'Приватность' },
-	{ slug: '/security', label: 'Безопасность' },
+	{ slug: '#', label: TRANSLATE.PROFILE_DATA },
+	{ slug: '#', label: TRANSLATE.WORKSPACE },
+	{ slug: '#', label: TRANSLATE.PRIVACY },
+	{ slug: '#', label: TRANSLATE.SECURITY },
 ];

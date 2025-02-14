@@ -1,16 +1,34 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import styles from './Popup.module.scss';
 import { TRANSLATE } from './i18';
+import { useDispatch } from 'react-redux';
+import { setActivePopup, useMyAppSelector } from 'Store/app.slice';
 
 /** Компонент попапа */
 const Popup = (): ReactElement => {
+	const dispatch = useDispatch();
+	const isPopupOpen = useMyAppSelector().isActivePopup;
+
 	/** Обработчик закрытия попапа */
 	const handleCloseModal = () => {
-		console.log('тут будет обработчик закрытия попапа');
+		dispatch(setActivePopup(false));
 	};
 
+	/** Закрываем попап через 4 секунды после монтирования компонента */
+	useEffect(() => {
+		if (isPopupOpen) {
+			const timer = setTimeout(() => handleCloseModal(), 4000);
+			document.body.style.overflow = 'hidden';
+
+			return () => {
+				clearTimeout(timer);
+				document.body.style.overflow = '';
+			};
+		}
+	}, [isPopupOpen]);
+
 	return (
-		<div className={styles.overlay}>
+		<div className={`${styles.overlay} ${isPopupOpen ? styles.active : ''}`}>
 			<div className={styles.modal}>
 				<button className={styles.close} onClick={handleCloseModal} type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">

@@ -28,7 +28,6 @@ const Dropdown = ({ options, userId, className }: IProps): ReactElement => {
 
 	/** Обработчик открытия/закрытия выпадающего списка */
 	const toggleDropdown = (): void => {
-		console.log('ddd');
 		setIsOpen(!isOpen);
 	};
 

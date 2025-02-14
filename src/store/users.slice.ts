@@ -2,6 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { useAppSelector } from 'Common/hooks';
 import { RootState } from './store';
 import { User } from './models';
+import { IFormData } from 'Components/UserEdit/models';
 
 /**
  * @desc Интерфейс состояния пользователя
@@ -65,6 +66,18 @@ export const usersSlice = createSlice({
 				state.activeUsers.push(userToActive);
 			}
 		},
+		updateUser: (state, action: PayloadAction<{ id: number; formData: IFormData }>) => {
+			const user = state.activeUsers.find(user => user.id === action.payload.id);
+
+			if (user) {
+				user.name = action.payload.formData.name;
+				user.username = action.payload.formData.nickname;
+				user.email = action.payload.formData.email;
+				user.address.city = action.payload.formData.city;
+				user.phone = action.payload.formData.phone;
+				user.company.name = action.payload.formData.company;
+			}
+		},
 		removeUser: (state, action: PayloadAction<number>) => {
 			state.activeUsers = state.activeUsers.filter(user => user.id !== action.payload);
 		},
@@ -86,9 +99,9 @@ export const usersSlice = createSlice({
 	},
 });
 
-const productSelector = (state: RootState) => state.users;
+const productSelector = (state: RootState): IUsersReduxState => state.users;
 
-export const useUsersSelector = () => useAppSelector(productSelector);
+export const useUsersSelector = (): IUsersReduxState => useAppSelector(productSelector);
 
-export const { moveToArchive, moveToActive, removeUser } = usersSlice.actions;
+export const { moveToArchive, moveToActive, updateUser, removeUser } = usersSlice.actions;
 export default usersSlice.reducer;
