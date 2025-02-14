@@ -1,8 +1,6 @@
 import { ReactElement } from 'react';
 import { Dropdown } from 'Common/components';
-import { Link } from 'react-router-dom';
 import { User } from 'Store/models';
-import { ROUTES } from 'Common/consts';
 import styles from './UserCard.module.scss';
 
 /**
@@ -27,7 +25,7 @@ const UserCard = ({ user, archive, className }: IProps): ReactElement => {
 			<div className={styles.dropdownWrapper}>
 				<Dropdown options={options} userId={user.id} />
 			</div>
-			<Link to={`${ROUTES.PROFILE}/${user.id}`} className={styles.inner}>
+			<div className={styles.inner}>
 				<div className={styles.avatar}>
 					<img src="/avatar.jpeg" alt={user.name} />
 				</div>
@@ -36,7 +34,7 @@ const UserCard = ({ user, archive, className }: IProps): ReactElement => {
 					<p className={styles.company}>{user.company.name}</p>
 					<p className={styles.city}>{user.address.city}</p>
 				</div>
-			</Link>
+			</div>
 		</div>
 	);
 };
