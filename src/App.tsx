@@ -14,7 +14,6 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<HomePage />} />
-					<Route path={ROUTES.PROFILE} element={<>тут профиль</>} />
 					<Route path={ROUTES.PROFILE_ID} element={<UserEditPage />} />
 				</Route>
 			</Routes>
