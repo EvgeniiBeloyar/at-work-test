@@ -6,6 +6,7 @@
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		"skipLibCheck": true,
+		"strictNullChecks": false,
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
@@ -24,7 +25,8 @@
 			"Scss/*": ["./src/scss/*"],
 			"Components/*": ["./src/components/*"],
 			"Common/*": ["./src/common/*"],
-			"Pages/*": ["./src/pages/*"]
+			"Pages/*": ["./src/pages/*"],
+			"Store/*": ["./src/store/*"]
 		}
 	},
 	"include": ["src"]
