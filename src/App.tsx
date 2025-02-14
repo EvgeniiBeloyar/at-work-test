@@ -3,10 +3,10 @@ import './scss/main.scss';
 import Layout from 'Components/Layout';
 import { ROUTES } from 'Common/consts';
 import HomePage from 'Pages/HomePage';
-import UserEditPage from 'Pages/UserEditPage';
 import { lazy, Suspense } from 'react';
 
 const PopupLazy = lazy(() => import('Components/Popup'));
+const UserEditPage = lazy(() => import('Pages/UserEditPage'));
 
 function App() {
 	return (
