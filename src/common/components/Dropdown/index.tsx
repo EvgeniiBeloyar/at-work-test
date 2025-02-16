@@ -4,16 +4,18 @@ import { useAppDispatch, useMatchMedia, useOutsideClick } from 'Common/hooks';
 import { moveToActive, moveToArchive, removeUser } from 'Store/users.slice';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'Common/consts';
+import { EDropdownOptions } from 'Common/enums/dropdownOptions';
+import { TRANSLATE as TRANSLATE_GLOBAL } from 'Common/I18';
 
 /**
  * @desc Интерфейс компонента выпадающего списка.
  *
- * @prop {string[]} options - Опции для выпадающего списка.
+ * @prop {EDropdownOptions[]} options - Опции для выпадающего списка.
  * @prop {number} userId - ID пользователя.
  * @prop {string} className - Css-класс.
  */
 interface IProps {
-	options: string[];
+	options: EDropdownOptions[];
 	userId: number;
 	className?: string;
 }
@@ -41,21 +43,21 @@ const Dropdown = ({ options, userId, className }: IProps): ReactElement => {
 	const dropdownRef = useOutsideClick(handleClickOutside);
 
 	/** Обработчик нажатия кнопки */
-	const handleSelected = (option: string): void => {
+	const handleSelected = (option: EDropdownOptions): void => {
 		switch (option) {
 			// Переход на страницу редактирования пользователя
-			case 'Редактировать':
+			case EDropdownOptions.TO_EDIT:
 				navigate(`${ROUTES.PROFILE}/${userId}`);
 				break;
 			// Архивируем пользователя
-			case 'Архивировать':
+			case EDropdownOptions.TO_ARCHIVE:
 				dispatch(moveToArchive(userId));
 				break;
-			case 'Скрыть':
+			case EDropdownOptions.TO_HIDE:
 				// Скрываем пользователя
 				dispatch(removeUser(userId));
 				break;
-			case 'Активировать':
+			case EDropdownOptions.TO_ACTIVE:
 				// Активируем пользователя
 				dispatch(moveToActive(userId));
 				break;
@@ -103,7 +105,7 @@ const Dropdown = ({ options, userId, className }: IProps): ReactElement => {
 						{options.map(option => (
 							<li key={option} className={styles.item}>
 								<button type="button" onClick={() => handleSelected(option)}>
-									{option}
+									{TRANSLATE_GLOBAL[option]}
 								</button>
 							</li>
 						))}
