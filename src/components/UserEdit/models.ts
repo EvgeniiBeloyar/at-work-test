@@ -1,4 +1,4 @@
-import { EUserFormFields } from './Enums';
+import { EUserFormFields } from './enums';
 
 /**
  * @desc Интерфейс для формы редактирования.

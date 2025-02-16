@@ -10,7 +10,7 @@ import { fetchUserById } from './services';
 import { validateForm } from './utils';
 import { IFormData } from './models';
 import { setActivePopup } from 'Store/app.slice';
-import { EUserFormFields } from './Enums';
+import { EUserFormFields } from './enums';
 
 /** Компонент редактирования пользователя */
 const UserEdit = (): ReactElement => {

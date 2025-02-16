@@ -1,4 +1,4 @@
-import { EUserFormFields } from '../Enums';
+import { EUserFormFields } from '../enums';
 
 export const TRANSLATE = {
 	BACK: 'Назад',
