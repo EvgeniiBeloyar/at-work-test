@@ -1,0 +1,49 @@
+@use './hover' as *;
+
+@mixin ICON-FILL {
+	svg {
+		path {
+			transition: all var(--transition-300);
+		}
+	}
+
+	@include hover {
+		svg {
+			path {
+				fill: var(--color-accent);
+			}
+		}
+	}
+
+	&:active {
+		svg {
+			path {
+				fill: var(--color-gray-700);
+			}
+		}
+	}
+}
+
+@mixin ICON-STROKE {
+	svg {
+		path {
+			transition: all var(--transition-300);
+		}
+	}
+
+	@include hover {
+		svg {
+			path {
+				stroke: var(--color-accent);
+			}
+		}
+	}
+
+	&:active {
+		svg {
+			path {
+				stroke: var(--color-gray-700);
+			}
+		}
+	}
+}

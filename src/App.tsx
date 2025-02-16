@@ -6,7 +6,7 @@ import HomePage from 'Pages/HomePage';
 import UserEditPage from 'Pages/UserEditPage';
 import { lazy, Suspense } from 'react';
 
-const PopupLazy = lazy(() => import('Components/Popup'));
+const Popup = lazy(() => import('Components/Popup'));
 
 function App() {
 	return (
@@ -14,13 +14,12 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<HomePage />} />
-					<Route path={ROUTES.PROFILE} element={<>тут профиль</>} />
 					<Route path={ROUTES.PROFILE_ID} element={<UserEditPage />} />
 				</Route>
 			</Routes>
 
 			<Suspense fallback={<></>}>
-				<PopupLazy />
+				<Popup />
 			</Suspense>
 		</>
 	);

@@ -1,5 +1,7 @@
 @use 'Scss/mixins/fonts' as *;
 @use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
 
 .wrapper {
 	display: flex;
@@ -22,7 +24,7 @@
 		@include T2-MEDIUM;
 		transition: all var(--transition-300);
 
-		&:focus,
+		&:active,
 		&::placeholder {
 			color: var(--color-gray-700);
 		}
@@ -46,6 +48,7 @@
 .clear {
 	flex-shrink: 0;
 	opacity: 0;
+	pointer-events: none;
 	transition: opacity var(--transition-300);
 
 	svg {
@@ -53,10 +56,18 @@
 			fill: var(--color-gray-700);
 		}
 	}
+
+	@include ICON-FILL;
 }
 
 .inner:has(input:focus) .clear {
 	opacity: 1;
+	pointer-events: all;
+}
+
+.inner:has(input:active) .clear {
+	opacity: 1;
+	pointer-events: all;
 }
 
 .error {
