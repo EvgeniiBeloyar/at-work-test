@@ -35,6 +35,7 @@ const Popup = (): ReactElement => {
 		if (isPopupOpen) {
 			handleCloseModal();
 		}
+		// eslint-disable-next-line
 	}, [location]);
 
 	return (

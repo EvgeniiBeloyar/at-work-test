@@ -10,6 +10,7 @@ import { fetchUserById } from './services';
 import { validateForm } from './utils';
 import { IFormData } from './models';
 import { setActivePopup } from 'Store/app.slice';
+import { EUserFormFields } from './Enums';
 
 /** Компонент редактирования пользователя */
 const UserEdit = (): ReactElement => {
@@ -68,12 +69,12 @@ const UserEdit = (): ReactElement => {
 			try {
 				const data = await fetchUserById(id);
 				setForm({
-					name: data.name,
-					nickname: data.username,
-					email: data.email,
-					city: data.address.city,
-					phone: data.phone,
-					company: data.company.name,
+					[EUserFormFields.NAME]: data.name,
+					[EUserFormFields.NICKNAME]: data.username,
+					[EUserFormFields.EMAIL]: data.email,
+					[EUserFormFields.CITY]: data.address.city,
+					[EUserFormFields.PHONE]: data.phone,
+					[EUserFormFields.COMPANY]: data.company.name,
 				});
 			} catch (error) {
 				console.error(error);
@@ -117,59 +118,59 @@ const UserEdit = (): ReactElement => {
 							<form className={styles.form} onSubmit={handleSubmit}>
 								<div className={styles.inputs}>
 									<Input
-										label="Имя"
-										placeholder="Введите имя"
-										name="name"
+										label={TRANSLATE.LABELS[EUserFormFields.NAME]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.NAME]}
+										name={EUserFormFields.NAME}
 										value={form.name}
 										onChange={handleChange}
-										onClear={() => handleClear('name')}
+										onClear={() => handleClear(EUserFormFields.NAME)}
 										error={errors.name}
 									/>
 									<Input
-										label="Никнейм"
-										placeholder="Введите никнейм"
-										name="nickname"
+										label={TRANSLATE.LABELS[EUserFormFields.NICKNAME]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.NICKNAME]}
+										name={EUserFormFields.NICKNAME}
 										value={form.nickname}
 										onChange={handleChange}
-										onClear={() => handleClear('nickname')}
+										onClear={() => handleClear(EUserFormFields.NICKNAME)}
 										error={errors.nickname}
 									/>
 									<Input
+										label={TRANSLATE.LABELS[EUserFormFields.EMAIL]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.EMAIL]}
+										name={EUserFormFields.EMAIL}
 										type="email"
-										label="Почта"
-										placeholder="Введите email"
-										name="email"
 										value={form.email}
 										onChange={handleChange}
-										onClear={() => handleClear('email')}
+										onClear={() => handleClear(EUserFormFields.EMAIL)}
 										error={errors.email}
 									/>
 									<Input
-										label="Город"
-										placeholder="Введите город"
-										name="city"
+										label={TRANSLATE.LABELS[EUserFormFields.CITY]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.CITY]}
+										name={EUserFormFields.CITY}
 										value={form.city}
 										onChange={handleChange}
-										onClear={() => handleClear('city')}
+										onClear={() => handleClear(EUserFormFields.CITY)}
 										error={errors.city}
 									/>
 									<Input
 										type="tel"
-										label="Телефон"
-										placeholder="Введите телефон"
-										name="phone"
+										label={TRANSLATE.LABELS[EUserFormFields.PHONE]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.PHONE]}
+										name={EUserFormFields.PHONE}
 										value={form.phone}
 										onChange={handleChange}
-										onClear={() => handleClear('phone')}
+										onClear={() => handleClear(EUserFormFields.PHONE)}
 										error={errors.phone}
 									/>
 									<Input
-										label="Название компании"
-										placeholder="Введите название компании"
-										name="company"
+										label={TRANSLATE.LABELS[EUserFormFields.COMPANY]}
+										placeholder={TRANSLATE.PLACEHOLDERS[EUserFormFields.COMPANY]}
+										name={EUserFormFields.COMPANY}
 										value={form.company}
 										onChange={handleChange}
-										onClear={() => handleClear('company')}
+										onClear={() => handleClear(EUserFormFields.COMPANY)}
 										error={errors.company}
 									/>
 								</div>
