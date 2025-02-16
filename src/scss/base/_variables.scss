@@ -1,0 +1,19 @@
+$grid-breakpoints-xs: 0;
+$grid-breakpoints-sm: 576px;
+$grid-breakpoints-md: 768px;
+$grid-breakpoints-lg: 992px;
+$grid-breakpoints-xl: 1200px;
+$grid-breakpoints-xxl: 1400px;
+$grid-breakpoints-xxxl: 1920px;
+
+$grid-breakpoints-max-sm: 576px - 0.02px;
+$grid-breakpoints-max-md: 768px - 0.02px;
+$grid-breakpoints-max-lg: 992px - 0.02px;
+$grid-breakpoints-max-xl: 1200px - 0.02px;
+$grid-breakpoints-max-xxl: 1400px - 0.02px;
+
+$container-max-width: 1160px;
+$container-padding: 60px;
+
+$hoverMixin: hover;
+$hoverPointerMixin: fine;

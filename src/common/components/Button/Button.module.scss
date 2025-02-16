@@ -1,0 +1,25 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/breakpoints' as *;
+
+.button {
+	padding: 0 42px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-black);
+	color: var(--color-gray-50);
+	border-radius: 50px;
+	@include T2-SEMIBOLD;
+	transition: all var(--transition-300);
+
+	@include hover {
+		color: var(--color-gray-700);
+		background-color: var(--color-gray-100);
+	}
+
+	@include media-max-md {
+		height: 44px;
+	}
+}

@@ -13,10 +13,14 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.5.1",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-dom": "^19.0.0",
+		"react-redux": "^9.2.0",
+		"react-router-dom": "6.22.0"
 	},
 	"devDependencies": {
+		"@types/node": "^22.13.1",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react-swc": "^3.5.0",

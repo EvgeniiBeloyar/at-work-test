@@ -1,0 +1,36 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/breakpoints' as *;
+
+.wrapper {
+	position: relative;
+	padding-bottom: 198px;
+
+	@include media-max-md {
+		padding-bottom: 40px;
+	}
+}
+
+.section {
+	padding-top: 40px;
+
+	@include media-max-md {
+		padding-top: 32px;
+	}
+}
+
+.grid {
+	margin-top: 28px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	grid-auto-rows: max-content;
+	gap: 32px 40px;
+
+	@include media-max-lg {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include media-max-md {
+		margin-top: 16px;
+		gap: 20px;
+	}
+}

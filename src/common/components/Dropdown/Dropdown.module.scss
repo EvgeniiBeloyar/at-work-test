@@ -1,0 +1,70 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
+@use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/base/z-index' as *;
+
+.dropdown {
+	flex-shrink: 0;
+}
+
+.trigger {
+	@include ICON-FILL;
+}
+
+.body {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: $ui-index-4;
+	min-width: 200px;
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+	transition: all var(--transition-300);
+	background-color: var(--color-gray-50);
+	border-radius: 12px;
+	box-shadow: 0px 0px 2px 0px rgba(90, 90, 90, 1);
+
+	@include media-max-md {
+		min-width: 160px;
+	}
+}
+
+.inner {
+	overflow: hidden;
+}
+
+.body.open {
+	top: calc(100% + 10px);
+	grid-template-rows: 1fr;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: inherit;
+}
+
+.list {
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.item {
+	button {
+		padding: 8px 12px;
+		width: 100%;
+		@include T2-MEDIUM;
+		color: var(--color-black);
+		text-align: left;
+		overflow: hidden;
+		overflow-wrap: break-word;
+		transition: all var(--transition-300);
+
+		@include hover {
+			color: var(--color-accent);
+		}
+	}
+}

@@ -1,0 +1,26 @@
+:root {
+	/** Цвета  */
+	--color-accent: #22a0bc;
+	--color-black: #161616;
+	--color-gray-700: #595959;
+	--color-gray-500: #9c9c9c;
+	--color-gray-300: #dadada;
+	--color-gray-100: #f4f4f4;
+	--color-gray-50: #fdfdfd;
+	--color-red: #ff3333;
+
+	/** Шрифты */
+	--font-family-primary: 'Manrope', serif;
+
+	/** Анимированные переходы */
+	--transition-300: 0.3s ease-in;
+
+	/** Размеры Header  */
+	--header-height: 106px;
+}
+
+@media (width <= 768px) {
+	:root {
+		--header-height: 46px;
+	}
+}

@@ -1,0 +1,17 @@
+/** Сброс и нормализация стилей  */
+@import './reset';
+
+/** Подключение шрифтов  */
+@import './fonts';
+
+/** Переменные scss */
+@import './variables';
+
+/** Переменные css */
+@import './root';
+
+/** Z-index  */
+@import './z-index';
+
+/** Базовые стили  */
+@import './base';

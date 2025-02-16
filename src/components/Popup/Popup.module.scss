@@ -1,0 +1,66 @@
+@use 'Scss/mixins/fonts' as *;
+@use 'Scss/mixins/breakpoints' as *;
+@use 'Scss/mixins/hover' as *;
+@use 'Scss/mixins/icons' as *;
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	padding: 52px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22, 22, 22, 0.24);
+	visibility: hidden;
+	pointer-events: none;
+	opacity: 0;
+	z-index: -1;
+	transition: all var(--transition-300);
+}
+
+.active {
+	opacity: 1;
+	z-index: 30;
+	visibility: visible;
+	pointer-events: all;
+}
+
+.modal {
+	position: relative;
+	padding: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 16px;
+	background-color: var(--color-gray-50);
+
+	@include media-max-md {
+		padding: 32px;
+	}
+}
+
+.close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+
+	@include ICON-FILL;
+}
+
+.body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+
+	p {
+		@include HEADLINE;
+	}
+
+	@include media-max-md {
+		gap: 16px;
+	}
+}

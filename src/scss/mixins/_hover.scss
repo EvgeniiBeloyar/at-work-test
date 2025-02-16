@@ -1,0 +1,13 @@
+/** 
+	Mixin для работы hover при тех случаях когда устройство поддерживает hover
+	Проверка наличия hover-события и точного указателя
+*/
+@use '../base/variables' as *;
+
+@mixin hover {
+	@media (hover: $hoverMixin) and (pointer: $hoverPointerMixin) {
+		&:hover {
+			@content;
+		}
+	}
+}
